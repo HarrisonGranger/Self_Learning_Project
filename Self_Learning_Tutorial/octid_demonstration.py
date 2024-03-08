@@ -1,14 +1,15 @@
 # Harrison Granger
-# Self Learning Tutorial 
+# Self Learning Tutorial
+# March 8, 2024
 
 import octid_class
 
 # Your dataset paths:
-td = "C:/Users/htgra/Desktop/Self_Learning_Tutorial/OCTID Source/OCTID-main/small_samples/training_dataset"
-vd = "C:/Users/htgra/Desktop/Self_Learning_Tutorial/OCTID Source/OCTID-main/small_samples/validation_dataset"
-ud = "C:/Users/htgra/Desktop/Self_Learning_Tutorial/OCTID Source/OCTID-main/small_samples/unlabelled_dataset"
+td = "Path to your training data"
+vd = "Path to your validation data"
+ud = "Path to your unlabelled data"
 
-# Lets try an example with the default values.
+# Call the octid class with default options.
 classify_model = octid_class.octid(model = 'googlenet', 
                              customised_model = False, 
                              feature_dimension = 3, 
@@ -17,4 +18,5 @@ classify_model = octid_class.octid(model = 'googlenet',
                              validation_dataset=vd, 
                              unlabeled_dataset=ud
                              )
+# Cass the classify_model function to begin classification.
 classify_model()
