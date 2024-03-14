@@ -327,14 +327,11 @@ class octid:
                 plt.title('UMAP_projection_of_{}_{}_{}_val'.format(self.model_name, self.dim, self.SVM_nu))
                 self.fig2.savefig('UMAP_projection_of_{}_{}_{}_val.png'.format(self.model_name, self.dim, self.SVM_nu),
                                   bbox_inches='tight', dpi=400)
-                
         else:
             # Delete the current results and start fresh.
             if os.path.exists('resultant'):
                 shutil.rmtree('resultant')
-            # Make new directory.
             os.mkdir('resultant')
-            # Create sub-folders for positive and negative results.
             os.mkdir('resultant/positive')
             os.mkdir('resultant/negative')
             self.unknown = torchvision.datasets.ImageFolder(root=self.unknown_path, transform=self.data_transform)
@@ -503,13 +500,16 @@ class octid:
                 ax = self.CM_test.plot(kind='bar', title='Value Classification Percentages')
                 # Format y-axis as percent.
                 ax.yaxis.set_major_formatter(mtick.PercentFormatter(1000))
-                # Set the x-axis label.
                 ax.set_xlabel('Key')
-                # Set the y-axis label.
                 ax.set_ylabel('Percent of Samples')
                 self.fig4 = ax.get_figure()
                 # Save figure image.
                 self.fig4.savefig('val_prediction_bar_graph_{}.png'.format(self.model_name))
+                
+
+            # Return accuracy number
+            return self.acc
+        
 
     def hook_fn_forward(self, module, input, output):
         self.total_in.append(input)
